@@ -27,14 +27,14 @@
     <nav class="nav">
         <div class="container">
             <ul>
-                <li><a href="#">O mnie</a></li>
-                <li><a href="#">Oferta</a></li>
-                <li><a href="#">Projekty</a></li>
-                <li><a href="#">Kontakt</a></li>
+                <li><a href="#O-mnie">O mnie</a></li>
+                <li><a href="#Oferta">Oferta</a></li>
+                <li><a href="#Projekty">Projekty</a></li>
+                <li><a href="#Kontakt">Kontakt</a></li>
             </ul>
         </div>
     </nav>
-    <section class="section">
+    <section class="section" id="O-mnie">
         <div class="container">
             <h2>O mnie</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos perspiciatis quod sunt. Ab accusantium
@@ -50,7 +50,7 @@
             impedit ipsum itaque obcaecati porro quae quam qui reiciendis rem, repellat sequi tenetur unde, vel.</p>
         </div>
     </section>
-    <section class="section">
+    <section class="section" id="Oferta">
         <div class="container">
             <h2>Oferta</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos perspiciatis quod sunt. Ab accusantium
@@ -66,7 +66,7 @@
             impedit ipsum itaque obcaecati porro quae quam qui reiciendis rem, repellat sequi tenetur unde, vel.</p>
         </div>
     </section>
-    <section class="section">
+    <section class="section" id="Projekty">
         <div class="container">
             <h2>Projekty</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos perspiciatis quod sunt. Ab accusantium
@@ -82,7 +82,7 @@
             impedit ipsum itaque obcaecati porro quae quam qui reiciendis rem, repellat sequi tenetur unde, vel.</p>
         </div>
     </section>
-    <section class="section">
+    <section class="section" id="Kontakt">
         <div class="container">
             <h2>Kontakt</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos perspiciatis quod sunt. Ab accusantium
@@ -109,6 +109,21 @@
     <script src="./js/stickyfill.js"></script>
     <script>
         $('.nav').Stickyfill();
+
+        $(function() {
+            $('a[href*="#"]:not([href="#"])').click(function() {
+                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                    if (target.length) {
+                        $('html,body').stop().animate({
+                            scrollTop: target.offset().top - 70
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
